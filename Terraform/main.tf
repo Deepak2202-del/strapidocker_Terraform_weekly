@@ -25,7 +25,8 @@ resource "aws_instance" "strapi_instance" {
       "sudo apt-get install -y docker.io", 
       "sudo usermod -aG docker ubuntu",     
       "sudo systemctl enable docker",    
-      "sudo systemctl start docker",     
+      "sudo systemctl start docker",
+     "sudo docker build -t dravula/strapi ."
       "sudo docker pull dravula/strapi:latest",  
       "sudo docker run -d -p 1337:1337 --name my_strapi dravula/strapi:latest" 
     ]

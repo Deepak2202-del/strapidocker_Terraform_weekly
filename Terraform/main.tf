@@ -12,7 +12,7 @@ resource "aws_instance" "strapi_instance" {
   associate_public_ip_address = true
 
   tags = {
-    Name = "Paramesh-Strapi-Instance"
+    Name = "Strapi-Instance"
   }
 
   provisioner "remote-exec" {
@@ -20,14 +20,14 @@ resource "aws_instance" "strapi_instance" {
       "sudo apt-get update",
       "sudo apt-get install -y nodejs npm git",
       "sudo npm install -g strapi",
-      "git clone https://github.com/Parameswaran17/strapidocker.git .",  # Clone repository into current directory
-      "cd /home/ubuntu/strapidocker",
+      "git clone https://github.com/Deepak2202-del/strapidocker_Terraform_weekly.git .",  # Clone repository into current directory
+      "cd /home/ubuntu/strapidocker_Terraform_weekly",
       "sudo apt-get install -y docker.io", 
       "sudo usermod -aG docker ubuntu",     
       "sudo systemctl enable docker",    
       "sudo systemctl start docker",     
-      "sudo docker pull parameswaran17/docker_image:latest",  
-      "sudo docker run -d -p 1337:1337 --name my_strapi parameswaran17/docker_image:latest" 
+      "sudo docker pull dravula/strapi:latest",  
+      "sudo docker run -d -p 1337:1337 --name my_strapi dravula/strapi:latest" 
     ]
 
     connection {
@@ -65,6 +65,6 @@ resource "aws_security_group" "strapi_sg" {
   }
 
   tags = {
-    Name = "Paramesh Security Group"
+    Name = "D_Security Group"
   }
 }

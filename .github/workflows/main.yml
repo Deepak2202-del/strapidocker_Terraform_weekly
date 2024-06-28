@@ -34,7 +34,7 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "."
-          target: "/home/ubuntu/strapidocker"
+          target: "/home/ubuntu/strapidocker_Terraform_weekly"
 
       - name: Run Strapi on EC2
         uses: appleboy/ssh-action@master
@@ -45,7 +45,7 @@ jobs:
           timeout: 10m
           script: |
             echo "Navigating to target directory..."
-            cd /home/ubuntu/strapidocker || { echo "Directory not found"; exit 1; }
+            cd /home/ubuntu/strapidocker_Terraform_weekly || { echo "Directory not found"; exit 1; }
             
             echo "Checking npm installation..."
             if ! command -v npm &> /dev/null; then
